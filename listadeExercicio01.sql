@@ -7,3 +7,7 @@ select livros.titulo, autores.nome
 from livros 
 left join autores on autor.id = livros.autor_id;
 
+select alunos.nome, matriculas.curso
+from alunos
+inner join matriculas on alunos.id = matriculas.aluno_id;
+
