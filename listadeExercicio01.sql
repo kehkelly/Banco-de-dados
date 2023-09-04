@@ -61,3 +61,8 @@ left join livros on autores.id_autor = livros.id_autor
 group by autores.id_autor, autores.nome
 order by TotalLivrosPublicados desc
 
+select produto, sum(valor) as ReceitaTotal
+from vendas
+group by produto
+limit 1;
+
