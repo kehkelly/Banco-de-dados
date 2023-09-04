@@ -39,3 +39,7 @@ select livros.titulo, autores.nome
 from livros
 inner join autores on livros.autor_id = autores.id;
 
+select livros.titulo, autores.nome
+from livros
+inner join autores on livros.autor_id = autores.id
+
