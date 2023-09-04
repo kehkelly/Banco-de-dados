@@ -19,3 +19,7 @@ select livros, autores, count(1)
 from livros
 group by autores;
 
+select alunos, curso from matriculas, count(1)
+from matriculas
+group by matriculas;
+
