@@ -23,3 +23,6 @@ select alunos, curso from matriculas, count(1)
 from matriculas
 group by matriculas;
 
+select produto, avg(receita) from vendas
+group by receita;
+
