@@ -72,3 +72,7 @@ left join livros on autores.id_autor = livros.id_autor
 left join vendas on livros.id_livro = vendas.id_livro
 group by autores.nome;
 
+select aluno_id, count(*) as NumeroDeMatriculas
+from matriculas
+group by aluno_id;
+
