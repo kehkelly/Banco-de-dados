@@ -51,3 +51,7 @@ select cursos.nome as NomeCurso, alunos.nome as NomeAluno
 from cursos
 rigth join alunos on cursos.id_curso = alunos.id_curso;
 
+select alunos.nome as NomeAluno, cursos.nome as NomeCurso
+from alunos
+inner join cursos on alunos.id_curso = cursos.id_curso;
+
