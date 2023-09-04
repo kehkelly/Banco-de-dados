@@ -66,3 +66,9 @@ from vendas
 group by produto
 limit 1;
 
+select autores.nome as NomeAutor, sum(20) as ReceitaTotal
+from autores
+left join livros on autores.id_autor = livros.id_autor
+left join vendas on livros.id_livro = vendas.id_livro
+group by autores.nome;
+
