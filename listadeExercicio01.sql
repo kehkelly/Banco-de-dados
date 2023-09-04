@@ -15,3 +15,7 @@ select produto, sum(receita) as receita_total
 from vendas
 group by produto;
 
+select livros, autores, count(1)
+from livros
+group by autores;
+
