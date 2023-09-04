@@ -41,7 +41,7 @@ inner join autores on livros.autor_id = autores.id;
 
 select alunos, matriculas.curso
 from matriculas
-inner join alunos on alunos.id = matriculas.aluno_id
+inner join alunos on alunos.id = matriculas.aluno_id;
 
 select autores.nome as NomeAutor, livros.titulo as TituloLivro
 from autores
@@ -59,7 +59,7 @@ select autores.nome AS NomeAutor, count(livros.id_livro) as TotalLivrosPublicado
 from autores
 left join livros on autores.id_autor = livros.id_autor
 group by autores.id_autor, autores.nome
-order by TotalLivrosPublicados desc
+order by TotalLivrosPublicados desc;
 
 select produto, sum(valor) as ReceitaTotal
 from vendas
@@ -76,3 +76,8 @@ select aluno_id, count(*) as NumeroDeMatriculas
 from matriculas
 group by aluno_id;
 
+select produto, count(*) as QuantidadeTransacoes
+from transacoes
+group by produto
+order by QuantidadeTransacoes desc
+limit 1;
