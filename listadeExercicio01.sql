@@ -26,3 +26,6 @@ group by matriculas;
 select produto, avg(receita) from vendas
 group by receita;
 
+select produto from vendas
+where receita > 10000.00;
+
