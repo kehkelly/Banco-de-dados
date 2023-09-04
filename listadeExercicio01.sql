@@ -55,3 +55,9 @@ select alunos.nome as NomeAluno, cursos.nome as NomeCurso
 from alunos
 inner join cursos on alunos.id_curso = cursos.id_curso;
 
+select autores.nome AS NomeAutor, count(livros.id_livro) as TotalLivrosPublicados
+from autores
+left join livros on autores.id_autor = livros.id_autor
+group by autores.id_autor, autores.nome
+order by TotalLivrosPublicados desc
+
