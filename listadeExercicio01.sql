@@ -29,3 +29,9 @@ group by receita;
 select produto from vendas
 where receita > 10000.00;
 
+select autores.nome, livros.titulo 
+from livros
+inner join livros on autores.id = livros.autor_id
+group by autores 
+where min(2);
+
