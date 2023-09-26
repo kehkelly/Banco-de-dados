@@ -67,3 +67,16 @@ end //
 call sp_AdicionarLivro('Novo Livro', 'Autor Desconhecido', 2023, 'Ficção', @resultado);
 select @resultado;
 
+create procedure sp_AutorMaisAntigo(out nome_autor varchar(255))
+begin
+    select autor_nome
+    into nome_autor
+    from autores
+    where autor_data_nascimento = (
+        select min(autor_data_nascimento)
+        from autores
+    );
+end //
+call sp_AutorMaisAntigo(@nome_autor);
+select @nome_autor;
+
