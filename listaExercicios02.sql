@@ -80,3 +80,30 @@ end //
 call sp_AutorMaisAntigo(@nome_autor);
 select @nome_autor;
 
+create procedure sp_AdicionarLivro(
+    in p_titulo varchar(255)         -- Parâmetro de entrada: título do livro
+    in p_autor varcahr(255),         -- Parâmetro de entrada: autor do livro
+    in p_ano_publicacao int,         -- Parâmetro de entrada: ano de publicação do livro
+    in p_categoria varchar(255),     -- Parâmetro de entrada: categoria do livro
+    out resultado varchar(255)       -- Parâmetro de saída: mensagem de resultado
+)
+begin
+    declare livro_id int;  -- Declaração de uma variável local para armazenar o ID do livro
+
+    -- Verifica se o título já existe na tabela
+    select id into livro_id from Livro where titulo = p_titulo limit 1;
+
+    -- Início do bloco condicional IF
+    if livro_id is not null then
+        -- Título já existe, retornar mensagem de erro
+        set resultado = 'O título já existe na tabela.';
+    else
+        -- Título não existe, inserir o novo livro na tabela
+        insert into Livro (titulo, autor, ano_publicacao, categoria)
+        values (p_titulo, p_autor, p_ano_publicacao, p_categoria);
+        
+        -- Define a variável resultado com uma mensagem de sucesso
+        set resultado = 'Livro adicionado com sucesso.';
+    end if;
+    -- Fim do bloco condicional IF
+end //
