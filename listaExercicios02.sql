@@ -107,3 +107,11 @@ begin
     end if;
     -- Fim do bloco condicional IF
 end //
+
+create procedure sp_LivrosESeusAutores()
+begin
+    select Livro.titulo, concat(Autor.nome, ' ', Autor.sobrenome) as autor
+    from Livro
+    inner join Autor on Livro.autor_id = Autor.id;
+end //
+call sp_LivrosESeusAutores();
