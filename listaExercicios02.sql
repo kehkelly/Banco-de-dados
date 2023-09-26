@@ -36,3 +36,12 @@ end //
 call sp_VerificarLivrosCategoria('Ficção', @categoria_tem_livros);
 select @categoria_tem_livros;
 
+create procedure sp_LivrosAteAno(in ano_param int)
+begin
+    select * from livros where ano_publicacao <= ano_param;
+end //
+call sp_LivrosAteAno(2021);
+call sp_LivrosAteAno(2010);
+call sp_LivrosAteAno(2007);
+call sp_LivrosAteAno(2016);
+
