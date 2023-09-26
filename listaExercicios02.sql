@@ -47,3 +47,23 @@ begin
     select titulo from livros where categoria = p_categoria;
 end //
 call sp_TitulosPorCategoria('Ficção');
+
+CREATE PROCEDURE sp_AdicionarLivro(
+    in p_titulo varchar(255),
+    in p_autor varchar(255),
+    in p_ano_publicacao int,
+    in p_categoria varchar(255),
+    out resultado varchar(255))
+begin
+    declare livro_id int;
+    select id into livro_id from Livro where titulo = p_titulo limit 1;
+    if livro_id is not null then
+        set resultado = 'O título já existe na tabela.';
+    else
+        insert into Livro (titulo, autor, ano_publicacao, categoria) values (p_titulo, p_autor, p_ano_publicacao, p_categoria);
+        set resultado = 'Livro adicionado com sucesso.';
+    end if;
+end //
+call sp_AdicionarLivro('Novo Livro', 'Autor Desconhecido', 2023, 'Ficção', @resultado);
+select @resultado;
+
