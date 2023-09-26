@@ -40,8 +40,10 @@ create procedure sp_LivrosAteAno(in ano_param int)
 begin
     select * from livros where ano_publicacao <= ano_param;
 end //
-call sp_LivrosAteAno(2021);
-call sp_LivrosAteAno(2010);
 call sp_LivrosAteAno(2007);
-call sp_LivrosAteAno(2016);
 
+create procedure sp_TitulosPorCategoria(in p_categoria varchar(255))
+begin
+    select titulo from livros where categoria = p_categoria;
+end //
+call sp_TitulosPorCategoria('Ficção');
