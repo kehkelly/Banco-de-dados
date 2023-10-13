@@ -83,7 +83,7 @@ end;
 //
 DELIMITER ;
 
-SELECT * TOTAL_VALOR(preco, qtd) as valor_total from produtos;
+select * total_valor(preco, qtd) as valor_total from produtos;
     
 select count(produto) from produtos;
 select max(preco) from produtos;
@@ -122,7 +122,6 @@ end;
 DELIMITER ;
 
 DELIMITER //
-
 create function is_palindromo(str varchar(255)) 
 returns int
 deterministic
@@ -137,5 +136,4 @@ begin
     end if;
 end;
 //
-
 DELIMITER ;
