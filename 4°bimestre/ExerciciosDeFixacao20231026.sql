@@ -22,7 +22,9 @@ END IF;
 SELECT * FROM Auditoria;
 
 CREATE TRIGGER after_pedidos_insert AFTER INSERT INTO Pedidos FOR EACH ROW
-IF (estoque < 5) THEN
+DECLARE estoque_atual INT;
+SELECT estoque INTO estoque_atual FROM Produtos WHERE id = NEW.produto_id;
+IF (estoque_atual < 5) THEN
     INSERT INTO Auditoria (mensagem) VALUES (CONCAT(estoque , 'produto(s) em estoque!'))
 END IF;
 SELECT * FROM Auditoria;
