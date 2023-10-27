@@ -19,4 +19,10 @@ IF (NEW.nome IS NULL OR NEW.nome = '') THEN
     INSERT INTO Auditoria (mensagem, nome_antigo, nome_novo) VALUES ('Tentativa de atualização inválida', OLD.nome, NEW.nome);
     SET NEW.nome = OLD.nome;
 END IF;
+SELECT * FROM Auditoria;
 
+CREATE TRIGGER after_pedidos_insert AFTER INSERT INTO Pedidos FOR EACH ROW
+IF (estoque < 5) THEN
+    INSERT INTO Auditoria (mensagem) VALUES (CONCAT(estoque , 'produto(s) em estoque!'))
+END IF;
+SELECT * FROM Auditoria;
