@@ -13,3 +13,10 @@ INSERT INTO Auditoria (mensagem, nome_antigo, nome_novo) VALUES ('update', OLD.n
 UPDATE Clientes SET nome = 'Phan' WHERE id = 2;
 SELECT * FROM Clientes;
 SELECT * FROM Auditoria;
+
+CREATE TRIGGER cancel_cliente_update BEFORE UPDATE ON Clientes FOR EACH ROW
+IF (NEW.nome IS NULL OR NEW.nome = '') THEN
+    INSERT INTO Auditoria (mensagem, nome_antigo, nome_novo) VALUES ('Tentativa de atualização inválida', OLD.nome, NEW.nome);
+    SET NEW.nome = OLD.nome;
+END IF;
+
